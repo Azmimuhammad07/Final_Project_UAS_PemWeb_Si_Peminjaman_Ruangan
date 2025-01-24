@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - eRuang</title>
+  <title>Login - Sistem Peminjaman Ruangan</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
-  <!-- Main Content -->
-  <div class="flex-grow flex items-center justify-center">
-    <div class="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
-      <h1 class="text-2xl font-semibold text-center text-gray-800 mb-4">eRuang - Sistem Peminjaman Ruangan Nurul Fikri</h1>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <!-- Container -->
+  <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg flex overflow-hidden">
+    <!-- Left Section -->
+    <div class="w-1/2 bg-blue-900 text-white p-8 flex flex-col justify-center items-center">
+      <!-- Gambar -->
+      <img src="assets/img/ru3.jpg" alt="Peminjaman Ruangan" class="w-40 h-40 object-cover mb-6 rounded-full border-4 border-white shadow-lg">
+      <!-- Teks -->
+      <h1 class="text-3xl font-bold mb-4 text-center">E-Ruang</h1>
+      <p class="text-sm leading-relaxed text-center">
+        Selamat datang di Sistem Peminjaman Ruangan Nurul Fikri. Login untuk mengakses fitur seperti peminjaman ruangan, manajemen jadwal, dan laporan penggunaan ruangan.
+      </p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="w-1/2 p-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Silakan Login</h2>
       <form id="loginForm">
         <div class="mb-4">
           <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
@@ -22,25 +34,14 @@
         </div>
         <div class="flex items-center justify-between">
           <button type="button" onclick="validateForm()" class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            Sign In
+            Login
           </button>
-          <a href="registrasi.html" class="text-sm text-indigo-600 hover:underline">Registrasi User</a>
+          <!-- Link ke halaman registrasi -->
+          <a href="registrasi.html" class="text-sm text-indigo-600 hover:underline">Register Now</a>
         </div>
       </form>
     </div>
   </div>
-
-  <!-- Footer -->
-<footer class="bg-blue-500 text-white py-4">
-  <div class="container mx-auto text-center">
-    <p class="text-sm">© 2025 eRuang. All Rights Reserved.</p>
-    <p class="text-sm">
-      Developed by 
-      <a href="#" class="text-white hover:text-gray-200 underline transition duration-300">Team eRuang</a>.
-    </p>
-  </div>
-</footer>
-
 
   <script>
     // Validasi form
@@ -49,7 +50,7 @@
       const password = document.getElementById('password').value;
 
       if (!username || !password) {
-        alert("Username dan Password tidak boleh kosong. Silahkan registrasi terlebih dahulu.");
+        alert("Username dan Password tidak boleh kosong.");
         return false;
       }
 
@@ -61,7 +62,7 @@
 
       if (user) {
         alert(`Selamat datang, ${user.fullName}!`);
-        window.location.href = 'index.html'; // Redirect ke halaman index.html
+        window.location.href = 'index.html'; // Redirect ke halaman dashboard.html
         return true;
       } else {
         alert("Akun tidak ditemukan. Silahkan registrasi terlebih dahulu.");
