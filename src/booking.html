@@ -10,52 +10,56 @@
 <body class="bg-light">
 
   <header class="fixed top-0 left-0 w-full z-50">
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 shadow-md">
+    <nav class="bg-blue-500 border-gray-200 px-6 lg:px-6 py-2.5 dark:bg-gray-800 shadow-md">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a href="#" class="flex items-center">
-          <img src="assets/img/logo e-ruang.png" class="mr-2 h-5 sm:h-7" alt="E-Ruang Logo" />
-          <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">E-Ruang</span>
+        <!-- Logo dan Judul -->
+        <a href="index.html" class="flex items-center transform transition-transform duration-300 hover:scale-110">
+          <img src="assets/img/logo e-ruang.png" class="mr-2 h-9 sm:h-9" alt="E-Ruang Logo" />
+          <span class="self-center text-lg font-semibold text-white whitespace-nowrap">E-Ruang</span>
         </a>
+  
+        <!-- Search Bar dan Login -->
         <div class="flex items-center lg:order-2">
           <!-- Search Bar -->
-          <div class="relative mr-3 hidden lg:block">
-            <input type="text" id="search" class="block w-full p-1.5 pr-8 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search">
-            <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">
-              <i class="fas fa-search"></i>
-            </button>
+          <div class="relative hidden lg:block mr-2">
+            <input type="text" id="search" class="block w-full px-2 py-1 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Search">
           </div>
-          <a href="login.html" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
-          <!-- Hamburger Menu Button -->
-          <button id="menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-md lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-            <span class="sr-only">Open main menu</span>
+          <!-- Login Button -->
+          <a href="login.html" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md text-sm px-3 py-1.5 dark:focus:ring-blue-800">Log in</a>
+  
+          <!-- Hamburger Menu -->
+          <button id="menu-btn" class="inline-flex items-center p-2 text-sm text-white rounded-lg lg:hidden hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd"></path>
             </svg>
           </button>
         </div>
-        <!-- Mobile Menu -->
+  
+        <!-- Navbar Links -->
         <div class="hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu">
-          <ul class="flex flex-col mt-2 font-medium lg:flex-row lg:space-x-6 lg:mt-0">
+          <ul class="flex flex-col lg:flex-row lg:space-x-6 lg:items-center text-sm">
             <li>
-              <a href="index.html" class="block py-1 px-2 text-gray-700 rounded-md lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white">Home</a>
+              <a href="index.html" class="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 hover:text-gray-300">Home</a>
             </li>
             <li>
-              <a href="fasilitas.html" class="block py-1 px-2 text-gray-700 rounded-md lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white">Fasilitas</a>
+              <a href="fasilitas.html" class="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 hover:text-gray-300">Fasilitas</a>
             </li>
             <li>
-              <a href="booking.html" class="block py-1 px-2 text-gray-700 rounded-md lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white">Booking</a>
+              <a href="booking.html" class="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 hover:text-gray-300">Booking</a>
             </li>
             <li>
-              <a href="berita.html" class="block py-1 px-2 text-gray-700 rounded-md lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white">Berita</a>
+              <a href="berita.html" class="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 hover:text-gray-300">Berita</a>
             </li>
             <li>
-              <a href="about.html" class="block py-1 px-2 text-gray-700 rounded-md lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white">Tentang Kami</a>
+              <a href="about.html" class="block py-2 pr-4 pl-3 text-white rounded lg:bg-transparent lg:p-0 hover:text-gray-300">Tentang Kami</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  </header>  
+  </header>
+  
+
 
   <div class="container mt-[70px]">
 
@@ -130,14 +134,17 @@
       </div>
     </form>
   </div>
-
-  <!-- Footer -->
- <footer class="bg-gray-800 text-white py-6 mt-10">
+<!-- Footer -->
+<footer class="bg-blue-500 text-white py-4">
   <div class="container mx-auto text-center">
     <p class="text-sm">© 2025 eRuang. All Rights Reserved.</p>
-    <p class="text-sm">Developed by <a href="#" class="text-blue-400 hover:underline">Team eRuang</a>.</p>
+    <p class="text-sm">
+      Developed by 
+      <a href="about.html" class="text-white hover:text-gray-200 underline transition duration-300">Team eRuang</a>.
+    </p>
   </div>
 </footer>
+
 
   <script>
     const bookingForm = document.getElementById('bookingForm');
