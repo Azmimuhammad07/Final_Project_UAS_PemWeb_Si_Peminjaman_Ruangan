@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peminjam</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Daftar Peminjam</h1>
+        <a href="../booking.html" class="btn btn-primary mb-3">Tambah</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Peminjam</th>
+                    <th>Kontak Person</th>
+                    <th>No. HP</th>
+                    <th>Email</th>
+                    <th>Kategori</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="daftarPeminjamBody">
+                <!-- Data akan diisi melalui JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan data peminjam dari Local Storage
+        function loadDataPeminjam() {
+            const dataPeminjam = JSON.parse(localStorage.getItem('dataPeminjam')) || [];
+            const daftarPeminjamBody = document.getElementById('daftarPeminjamBody');
+
+            // Kosongkan isi tabel terlebih dahulu
+            daftarPeminjamBody.innerHTML = '';
+
+            // Looping data untuk diisi ke dalam tabel
+            dataPeminjam.forEach((peminjam, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${peminjam.namaPeminjam}</td>
+                    <td>${peminjam.kontakPerson}</td>
+                    <td>${peminjam.telponHP}</td>
+                    <td>${peminjam.email}</td>
+                    <td>${peminjam.namaRuangan}</td>
+                    <td>
+                       <button class="btn btn-info btn-sm" onclick="location.href='../index.html'">Detail</button>
+                        <button class="btn btn-warning btn-sm" onclick="location.href='../booking.html'">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deletePeminjam(${index})">Delete</button>
+                    </td>
+                `;
+ 
+                daftarPeminjamBody.appendChild(row);
+            });
+        }
+
+        // Fungsi untuk menghapus data peminjam
+        function deletePeminjam(index) {
+            let dataPeminjam = JSON.parse(localStorage.getItem('dataPeminjam')) || [];
+            dataPeminjam.splice(index, 1); // Hapus data berdasarkan index
+            localStorage.setItem('dataPeminjam', JSON.stringify(dataPeminjam)); // Simpan kembali ke Local Storage
+            loadDataPeminjam(); // Refresh tabel
+            alert('Data peminjam berhasil dihapus!');
+        }
+
+        // Load data peminjam saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', loadDataPeminjam);
+    </script>
+</body>
+</html>

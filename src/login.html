@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - eRuang</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+  <!-- Main Content -->
+  <div class="flex-grow flex items-center justify-center">
+    <div class="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
+      <h1 class="text-2xl font-semibold text-center text-gray-800 mb-4">eRuang - Sistem Peminjaman Ruangan Nurul Fikri</h1>
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <input type="text" id="username" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Masukkan username">
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Masukkan password">
+        </div>
+        <div class="flex items-center justify-between">
+          <button type="button" onclick="validateForm()" class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            Sign In
+          </button>
+          <a href="registrasi.html" class="text-sm text-indigo-600 hover:underline">Registrasi User</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto text-center">
+      <p class="text-sm">© 2025 eRuang. All Rights Reserved.</p>
+      <p class="text-sm">Developed by <a href="#" class="text-blue-400 hover:underline">Team eRuang</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Validasi form
+    function validateForm() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        alert("Username dan Password tidak boleh kosong. Silahkan registrasi terlebih dahulu.");
+        return false;
+      }
+
+      // Ambil data pengguna dari localStorage
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Periksa apakah username dan password cocok dengan data yang ada
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        alert(`Selamat datang, ${user.fullName}!`);
+        window.location.href = 'index.html'; // Redirect ke halaman index.html
+        return true;
+      } else {
+        alert("Akun tidak ditemukan. Silahkan registrasi terlebih dahulu.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daftar Ruangan</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Daftar Ruangan</h1>
+        <a href="kelolaRuangan.html" class="btn btn-primary mb-3">Tambah</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Ruangan</th>
+                    <th>Lokasi</th>
+                    <th>Fasilitas</th>
+                    <th>Kategori</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="daftarRuanganBody">
+                <!-- Data akan diisi melalui JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../assets/js/adminlte.min.js"></script>
+
+    <script>
+        // Fungsi untuk menampilkan data ruangan dari Local Storage
+        function loadDataRuangan() {
+            const dataRuangan = JSON.parse(localStorage.getItem('dataRuangan')) || [];
+            const daftarRuanganBody = document.getElementById('daftarRuanganBody');
+
+            // Kosongkan isi tabel terlebih dahulu
+            daftarRuanganBody.innerHTML = '';
+
+            // Looping data untuk diisi ke dalam tabel
+            dataRuangan.forEach((ruangan, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${ruangan.namaRuangan}</td>
+                    <td>${ruangan.lokasi}</td>
+                    <td>${ruangan.fasilitas.join(', ')}</td>
+                    <td>${ruangan.kategori}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="location.href='../index.html'">Detail</button>
+                        <button class="btn btn-warning btn-sm" onclick="editRuangan(${index})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteRuangan(${index})">Delete</button>
+                    </td>
+                `;
+
+                daftarRuanganBody.appendChild(row);
+            });
+        }
+
+        // Fungsi untuk menghapus data ruangan
+        function deleteRuangan(index) {
+            let dataRuangan = JSON.parse(localStorage.getItem('dataRuangan')) || [];
+            dataRuangan.splice(index, 1); // Hapus data berdasarkan index
+            localStorage.setItem('dataRuangan', JSON.stringify(dataRuangan)); // Simpan kembali ke Local Storage
+            loadDataRuangan(); // Refresh tabel
+            alert('Data ruangan berhasil dihapus!');
+        }
+
+        // Fungsi untuk mengedit data ruangan
+        function editRuangan(index) {
+            const dataRuangan = JSON.parse(localStorage.getItem('dataRuangan')) || [];
+            const ruangan = dataRuangan[index];
+
+            // Simpan index ke dalam sessionStorage untuk digunakan di halaman kelolaRuangan.html
+            sessionStorage.setItem('editIndex', index);
+            sessionStorage.setItem('editData', JSON.stringify(ruangan));
+
+            // Arahkan ke halaman kelola ruangan
+            location.href = 'kelolaRuangan.html';
+        }
+
+        // Load data ruangan saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', loadDataRuangan);
+    </script>
+</body>
+</html>
